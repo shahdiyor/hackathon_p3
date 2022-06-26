@@ -1,12 +1,8 @@
 import cv2
 import numpy as np
 from model import FacialExpressionModel
-from keras.models import load_model
 import streamlit as st
-from keras.preprocessing.image import img_to_array
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
-import io
-from recognation import VideoCamera
 
 model = FacialExpressionModel()
 
@@ -17,11 +13,10 @@ all_emo = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
 
 
 class VideoTransformer(VideoTransformerBase):
-    def __init__(self, vid):
-        self.video = cv2.VideoCapture(vid)
+
     
     def transform(self, frame):
-        img = self.video.read()
+        img = frame.to_ndarray(format="bgr24")
         img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = facec.detectMultiScale(
             image=img_gray, scaleFactor=1.3, minNeighbors=5)
@@ -58,8 +53,8 @@ def main():
                                             </div>
                                             </br>"""
         vid = st.file_uploader("Выберите файл...")        
-        if vid is not None:
-            webrtc_streamer(key="example", video_transformer_factory=VideoTransformer('src/4.mp4'))    
+        # if vid is not None:
+        #     webrtc_streamer(key="example", video_transformer_factory=VideoTransformer('src/4.mp4'))    
         st.markdown(html_temp_home1, unsafe_allow_html=True)
     elif choice == "Распознование эмоций":
         st.header("Распознование эмоций с камеры")
