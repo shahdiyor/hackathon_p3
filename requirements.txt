@@ -144,6 +144,6 @@ Werkzeug==2.0.2
 widgetsnbextension==3.5.2
 wrapt==1.13.3
 zipp==3.6.0
+streamlit
 streamlit-webrtc>=0.11.0
-aiortc
-av
+opencv-python-headless>=4.5.1.48
