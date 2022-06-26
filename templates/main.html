@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ПП "Всевидящее око👁‍🗨"</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      
+    }
+
+    .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      height: "100%";
+      width: "100%";
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <img
+        id="bg"
+        width="100%"
+        height="100%"
+        src="{{ url_for('fer') }}"
+      />
+    </div>
+  </body>
+</html>
